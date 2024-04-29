@@ -1,11 +1,12 @@
-import BackgroundImage from '../../assets/bannerBackgound.webp'
-// import './Banner.scss'
-
-function Banner(){
+function Banner({backgroundImage, titre}){
     return(
         <div className='banner'>
-            <img width="1240xp" height="223px" className='banner__img' src={BackgroundImage} alt='paysage falaise'/>
-            <p className='banner__p'>Chez vous, partout et ailleurs</p>
+            <img width="1240xp" height="223px" className='banner__img' src={backgroundImage} alt='paysage falaise'/>
+            <div className='banner__bg'>
+                <p className='banner__bg__p'>{titre}</p>
+            </div>
+            
+            
         </div>
     )
 }

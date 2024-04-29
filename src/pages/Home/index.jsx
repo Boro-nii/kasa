@@ -1,20 +1,23 @@
 import Banner from "../../components/Banner";
 import Card from "../../components/Card";
-import Annonce from '../../datas/annonce.json';
-// import './Home.scss'
+import annonces from '../../datas/annonce.json';
+import bannerImage from '../../assets/bannerBackgound.webp'
 
 function Home() {
+
+  const bannerTitre = "Chez vous, partout et ailleurs"
+
   return (
-  <div>
-    <Banner/>
-    <section className="section">
+  <section className="home">
+    <Banner backgroundImage={bannerImage} titre={bannerTitre} />
+    <div className="home__div">
     {
-      Annonce.map((annonce)=>
+      annonces.map((annonce)=>
         <Card title={annonce.title} cover={annonce.cover} key={annonce.id} />
       )
     }
-    </section>
-  </div>
+    </div>
+  </section>
   )
 }
 
