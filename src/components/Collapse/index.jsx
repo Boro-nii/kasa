@@ -1,9 +1,17 @@
 import { useState } from "react"
 import Arrow from '../../assets/arrow.png'
+import './Collapse.scss'
 
 function Collapse({title, content}){
 
     const [isOpen, setIsOpen] = useState(false)
+    let contentArray = []
+
+    if(typeof content === "string"){
+        contentArray = [content]
+    }else{
+        contentArray = content
+    } 
 
     return(
         <dl className="collapse">
@@ -14,7 +22,13 @@ function Collapse({title, content}){
                     <img className="collapse__dt__button__img" src={Arrow} alt="bouton fleche" />
                 </button>
             </dt>
-            {isOpen && <dd className="collapse__dd">{content}</dd>}
+            {
+                isOpen && <dd className="collapse__dd">
+                {
+                    contentArray.map( (el) => <p className="collapse__dd__p">{el}</p>)
+                }
+                </dd>
+            }
         </dl>
     )
 }

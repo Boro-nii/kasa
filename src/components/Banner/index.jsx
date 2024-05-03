@@ -1,3 +1,5 @@
+import './Banner.scss'
+
 function Banner({backgroundImage, titre}){
     return(
         <div className='banner'>

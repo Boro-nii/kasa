@@ -2,6 +2,8 @@ import Banner from "../../components/Banner";
 import Card from "../../components/Card";
 import annonces from '../../datas/annonce.json';
 import bannerImage from '../../assets/bannerBackgound.webp'
+import { Link } from "react-router-dom";
+import './Home.scss'
 
 function Home() {
 
@@ -13,7 +15,9 @@ function Home() {
     <div className="home__div">
     {
       annonces.map((annonce)=>
-        <Card title={annonce.title} cover={annonce.cover} key={annonce.id} />
+        <Link className="link__card" to={`/logement/${annonce.id}`} key={annonce.id}>
+          <Card {...annonce} key={annonce.id} />
+        </Link>
       )
     }
     </div>
