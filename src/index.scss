@@ -6,10 +6,17 @@ $marge : 0.025*$max-width;
 *{
     box-sizing: border-box;
     margin: 0;
+
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
 }
 
 body{
     margin: 0;
+    min-width: 375px;
 }
 
 .main{
@@ -38,8 +45,6 @@ body{
     flex-direction: column-reverse;
     width: 0.3*$max-width;
     height:0.3*$max-width;
-    // margin-top: $marge;
-    // margin-right: $marge;
     .card__img{
         border-radius: 10px;
         object-fit: cover;
@@ -79,12 +84,17 @@ body{
         .logement__left__tag{
             color: white;
             background-color: $base-color;
-            border-radius: 10px ;
+            border-radius: 12px ;
             font-weight: 700;
             font-size: 14px;
             line-height: 20px;
             padding: 5px 10px;
             margin-right: 10px;
+
+            display: inline-block;
+            width: 115px;
+            text-align: center;
+            overflow: hidden;
         }
     }
 }    
@@ -95,7 +105,6 @@ body{
     gap: 40px;
     &.logement__collapses > .collapse{
         margin: 0px;
-        width: 600px;
         .collapse__dd{
             width: 100%;
         }
@@ -148,6 +157,7 @@ body{
         .header__a{
             line-height: 68px;
             font-size: 24px;
+            font-weight: 500;
             text-decoration: none;
             color: black;
             &.header__a:hover{
@@ -163,7 +173,17 @@ body{
     color: white;
     padding: 50px 0 20px;
     margin: 0;
-    margin-top: 50px;
+    margin-top: 40px;
+    .footer__logo{
+        width: 122px;
+        height: 40px;
+        margin-bottom: 30px;
+    }
+    .footer__p{
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 34px;
+    }
 }
 
 .banner{
@@ -204,7 +224,7 @@ body{
         .host__name__p {
             margin: 0px;
             size: 18px;
-            line-height: 25px;
+            line-height: 32px;
             font-weight: 500;
             text-align: right;
         }                
@@ -218,11 +238,12 @@ body{
 
 .rating{
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
 .collapse{
     margin-bottom: 30px;
+    flex: 1;
 
     .collapse__dt{
         background-color: #FF6060;
@@ -238,41 +259,38 @@ body{
 
         .collapse__dt__button{
             border: none;
-            background: none;
-            transform: rotate(180deg);                
+            background: none;     
+
+            transition-duration: 1s;
+            transition-property: transform;
         }
         .collapse__dt__button--open{
-            transition-duration: 700ms;
-            transition-property: transform;
             transform: rotate(0deg);
-
+        }
+        .collapse__dt__button--close{
+            transform: rotate(180deg);
         }
     }
-    .collapse__dd{
-        padding: 20px;
-        background-color: $background-color;
-        border-radius: 0 0 5px 5px;
+    .dd__overflow{
+        overflow: hidden;
+        .collapse__dd{
 
-        animation-name: collapseOpen;
-        animation-duration: 1s;
-
-        .collapse__dd__p{
-            margin: 0px;
-            line-height: 25px;
+            background-color: $background-color;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+            
+            transition: all 1s ease;
+        }  
+        .collapse__dd--open{ 
+            padding: 20px;
+            margin-top: 0;
         }
-    }  
+        .collapse__dd--close{
+            padding: 0px 20px;
+            margin-top: -100%;
+        }
+    }
 }
-
-@keyframes collapseOpen {
-    from {
-        
-        height: 0px;
-    }
-  
-    to {
-        height: auto;
-    }   
-  }
 
 .carrousel{
     width: 100%;
@@ -327,6 +345,12 @@ body{
     }
 
     .header{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        .header__logo{
+            width: 145px;
+            height: 46px;
+        }
         width: 90vw;
         &.header > img{
             max-width: 50vw;
@@ -335,20 +359,37 @@ body{
         &.header > nav{
             max-width: 50vw;
             .header__a{
-                font-size: 1.3em;
-                max-width: 25vw;
+                font-size: 14px;
+                max-width: 20vw;
+                line-height: 46px;
+
+                overflow: hidden;
             }
         }
     }
 
     .banner{
+        height: 110px;
+        margin-bottom: 0;
+        border-radius: 10px;
         .banner__img{
             width: 90vw;
+            height: inherit;
+            border-radius: 10px;
         }
         .banner__bg{
+            top: 106px;
             width: 90vw;
+            height: inherit;
+            border-radius: 10px;
             .banner__bg__p{
-                font-size: 2em;
+                font-size: 24px;
+                text-align: left;
+                padding-left: 20px;
+                // line-height: 110px;
+                line-height: normal;
+                margin-top: 30px;
+                max-height: 110px;
             }
         }
     }
@@ -362,8 +403,8 @@ body{
         margin-top: 5vw;
         margin-bottom: 0;
         .card__p{
-            font-size: 2em;
-            line-height: normal;
+            font-size: 18px;
+            line-height: 25px;
             max-width: 60vw;
         }
     }
@@ -372,11 +413,26 @@ body{
         margin-top: 2em;
     }
 
-    .error__p{
-        max-width: 90vw;
+    .error{
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        max-width: 80vw;
         margin: auto;
-        margin-bottom: 100px;
+
+        padding-top: 80px;
+        padding-bottom: 80px;
+
+        .error__h1{
+            font-size: 96px;
+            line-height: 140px;
+        }
+        .error__p{
+            font-size: 18px;
+            line-height: 25px;
+        }
     }
+    
 
     .carrousel{
         width: 90vw;
@@ -410,6 +466,10 @@ body{
 
     .footer{
         padding: 50px 0 50px;
+        margin-top: 5vw;
+        .footer__p{
+            font-size: 14px;
+        }
     }
 
 }

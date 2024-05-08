@@ -7,8 +7,6 @@ function Banner({backgroundImage, titre}){
             <div className='banner__bg'>
                 <p className='banner__bg__p'>{titre}</p>
             </div>
-            
-            
         </div>
     )
 }

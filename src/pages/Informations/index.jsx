@@ -10,8 +10,8 @@ function Informations(){
             <Banner backgroundImage={bannerImage} />
             <div className='info__collapses'>
             {
-                aboutList.map((elem)=>
-                    <Collapse title={elem.title} content={elem.content}/>
+                aboutList.map((elem, index)=>
+                    <Collapse key={elem.title+index} title={elem.title} contentString={elem.content}/>
                 )
             }
             </div>

@@ -11,9 +11,9 @@ function Rating({ratingValue}){
         {
             ratingTab.map((ratingI) =>
             ratingValue >= ratingI ? (
-                    <img key={ratingI} src={redStar} alt={ratingValue} height="36px" width="36px" />
+                    <img key={ratingI} src={redStar} alt={ratingValue} height="24" width="24px" />
                 ) : (
-                    <img key={ratingI} src={grayStar} alt={ratingValue} height="36px" width="36px" />
+                    <img key={ratingI} src={grayStar} alt={ratingValue} height="24px" width="24px" />
                 )
             )
         }

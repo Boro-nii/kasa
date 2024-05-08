@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
 import { Navigate } from "react-router-dom"
 
+// import { useEffect } from "react"
+
 import Carrousel from "../../components/Carrousel"
 import Collapse from "../../components/Collapse"
 import Rating from "../../components/Rating"
@@ -14,6 +16,15 @@ function Logement(){
 
     const param = useParams()
     const annonce = annonces.find((el) => el.id===param.id)
+
+    // useEffect(()=>{
+    //     if(!annonce){Navigate("/404")}
+    //     console.log(annonce)
+    // },[]);
+
+    // if(!annonce){
+    //     Navigate("/404");
+    // }
 
     return(      
         <section> 
@@ -40,8 +51,8 @@ function Logement(){
                         </div>
                     </div>
                     <div className="logement__collapses">
-                        <Collapse className="logement__collapses__collapse" title="Description" content={annonce.description}/>
-                        <Collapse className="logement__collapses__collapse" title="Equipements" content={annonce.equipments}/>
+                        <Collapse className="logement__collapses__collapse" title="Description" contentString={annonce.description}/>
+                        <Collapse className="logement__collapses__collapse" title="Equipements" contentArray={annonce.equipments}/>
                     </div>    
                 </div>
             }
