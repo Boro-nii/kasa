@@ -9,7 +9,7 @@ function Collapse({title, contentString, contentArray}){
     return(
         <dl className="collapse">
             <dt className="collapse__dt">{title}
-                <button className={isOpen ? "collapse__dt__button collapse__dt__button--open" : "collapse__dt__button collapse__dt__button--close" } onClick={() => {
+                <button className={isOpen ? "collapse__dt__button collapse__dt__button--open" : "collapse__dt__button collapse__dt__button--close"} onClick={() => {
                     setIsOpen(!isOpen)
                 }}>
                     <img className="collapse__dt__button__img" src={Arrow} alt="bouton fleche" />

@@ -1,16 +1,21 @@
+import { useState } from 'react'
 import './Thumbnail.scss'
+import { useMemo } from 'react'
 
 function Thumbnail({name, picture}){
 
-    let fullName = name.split(" ")
-    let firstName = fullName[0]
-    let lastName = fullName[1]
+    const [user, setUser] = useState([])
+
+    useMemo(()=>{
+        let fullName = name.split(" ")
+        setUser(fullName)
+    },[name])
  
     return(
         <div className="host">
             <div className="host__name">
-                <p  className="host__name__p">{firstName}</p>
-                <p  className="host__name__p">{lastName}</p>
+                <p  className="host__name__p">{user[0]}</p>
+                <p  className="host__name__p">{user[1]}</p>
             </div>
             <img className="host__img" src={picture} alt={name}/>
         </div>

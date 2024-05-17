@@ -1,13 +1,15 @@
 import Footer from "../Footer";
 import Header from "../Header";
 
-function Layout(props){
+import './Layout.scss'
+
+function Layout({children}){
 
     return(
         <div>
             <Header />
             <main className="main">
-                {props.children}
+                {children}
             </main>
             <Footer />
         </div>

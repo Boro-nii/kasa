@@ -7,7 +7,7 @@ import './Informations.scss'
 function Informations(){
     return(
         <section className='info'>
-            <Banner backgroundImage={bannerImage} />
+            <Banner backgroundImage={bannerImage} alt="paysage vallée montagneuse" />
             <div className='info__collapses'>
             {
                 aboutList.map((elem, index)=>

@@ -3,8 +3,6 @@ import arrowNext from "../../assets/arrow_next.png"
 import arrowPrev from "../../assets/arrow_prev.png"
 import './Carrousel.scss'
 
-// import { useEffect } from "react"
-
 function Carrousel({images}){
 
     const [index, setIndex] = useState(0)
@@ -19,24 +17,24 @@ function Carrousel({images}){
 
     return(
         <div className="carrousel">
-
-            {images.length>1 &&
-                <button className="carrousel__btn">
-                    <img className="carrousel__btn__img" src={arrowPrev} alt="précedente" onClick={() => {prevImage()}} />
+            {
+            (images.length>1 &&
+            <>
+                <button className="carrousel__btn" onClick={prevImage}>
+                    <img className="carrousel__btn__img" src={arrowPrev} alt="précedente" />
                 </button>
-            }
 
-            <img className="carrousel__img" src={images[index]} alt="logement"/>
+                <img className="carrousel__img" src={images[index]} alt="logement"/>
 
-            {images.length>1 && <p className="carrousel__index">{(index+1)+"/"+(images.length)}</p>}
+                <p className="carrousel__index">{(index+1)+"/"+(images.length)}</p>
 
-            {images.length>1 &&
-                <button className="carrousel__btn">
-                    <img className="carrousel__btn__img" src={arrowNext} alt="suivante" onClick={() => {nextImage()}} 
-                    />
+                <button className="carrousel__btn" onClick={nextImage}>
+                    <img className="carrousel__btn__img" src={arrowNext} alt="suivante" />
                 </button>
+            </>)
+            ||
+                <img className="carrousel__img" src={images[index]} alt="logement"/>
             }
-
         </div>
     )
 }

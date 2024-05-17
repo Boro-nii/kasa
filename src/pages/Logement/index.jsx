@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
-import { Navigate } from "react-router-dom"
 
-// import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import Carrousel from "../../components/Carrousel"
 import Collapse from "../../components/Collapse"
@@ -15,25 +15,21 @@ import './Logement.scss'
 function Logement(){
 
     const param = useParams()
-    const annonce = annonces.find((el) => el.id===param.id)
+    const[annonce, setAnnonce] = useState(null)
+    const navigate = useNavigate()
 
-    // useEffect(()=>{
-    //     if(!annonce){Navigate("/404")}
-    //     console.log(annonce)
-    // },[]);
-
-    // if(!annonce){
-    //     Navigate("/404");
-    // }
-
+    useEffect(()=>{
+        let result = annonces.find((el) => el.id===param.id)
+        if(!result){
+            navigate("/404")
+        }   
+        setAnnonce(result)
+    },[]);
+    
     return(      
         <section> 
-            {
-                (annonce===undefined 
-                && <Navigate to="/404"/>)
-                ||
-                  
-                <div>
+            {          
+                (annonce && <div>
                     <Carrousel images={annonce.pictures}/>
                     <div className="logement">
                         <div className="logement__left">
@@ -54,7 +50,7 @@ function Logement(){
                         <Collapse className="logement__collapses__collapse" title="Description" contentString={annonce.description}/>
                         <Collapse className="logement__collapses__collapse" title="Equipements" contentArray={annonce.equipments}/>
                     </div>    
-                </div>
+                </div>)
             }
         </section>      
     )

@@ -4,14 +4,11 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Routeur, Routes, Route } from 'react-router-dom';
 
 import Error from './components/Error';
-
 import Layout from './components/Layout';
 
 import Home from './pages/Home';
 import Informations from './pages/Informations';
 import Logement from './pages/Logement';
-
-import './index.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,4 +25,3 @@ root.render(
     </Routeur>
   </React.StrictMode>
 );
-
